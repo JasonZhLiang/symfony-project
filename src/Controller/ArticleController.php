@@ -37,5 +37,12 @@ class ArticleController
         return new Response(sprintf('Future page to show the article: %s', $slug));
     }
 
+    /**
+     * @Route("/php")
+     */
+    public function php()
+    {
+        return new Response(phpinfo().'php info');
+    }
 }
 
