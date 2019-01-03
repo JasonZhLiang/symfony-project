@@ -1,3 +1,4 @@
 #index:
 #    path: /
-#    controller: App\Controller\DefaultController::index
+#    controller: App\Controller\ArticleController::homepage
+#    controller: App\Controller\DefaultController::index    change the defaultcontroller to articlecontroller and the method to homepage
