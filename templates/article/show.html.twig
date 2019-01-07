@@ -1,0 +1,29 @@
+{#comments sytax of twig#}
+{% extends 'base.html.twig' %}
+
+{% block title %}Read {{ title }} {% endblock %}
+
+{% block body %}
+
+<h1>{{ 'hello'==title?'twig template: ':'the article title is '}} {{ title }}</h1>
+
+
+<div>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita fuga minima officia reprehenderit, sed voluptatem! Cupiditate eligendi esse fuga in nostrum obcaecati, perferendis quas quo recusandae repellat sint, sit voluptate?
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis deserunt est eveniet harum, in ipsam mollitia numquam voluptate? Enim ex explicabo minima. Blanditiis eligendi expedita facilis iure qui! Earum, quos!
+    </p>
+</div>
+
+
+<h2>Commnets ({{ comments|length }})</h2>
+<ul>
+    {% for comment in comments %}
+        <li>{{ comment }}</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

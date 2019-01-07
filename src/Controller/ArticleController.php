@@ -4,14 +4,18 @@
 namespace App\Controller;
 
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 
 
 
 //symfony welcome.html.php page only shows if you don't have any routes configured.
+//If your app needs to return HTML, one great tool Twig can be used, make the work easier.
+//As soon as you want to render a template, you need to extend a base class: AbstractController
+//class ArticleController
 
-class ArticleController
+class ArticleController extends AbstractController
 {
     /**
      * @Route("/")
@@ -30,6 +34,16 @@ class ArticleController
 //    }
 
     /**
+     * @Route("/php")
+     */
+    public function php()
+    {
+        return new Response(phpinfo().'php info');
+    }
+
+
+
+    /**
      * @Route("/news/{slug}")
      */
     public function show($slug)
@@ -38,11 +52,22 @@ class ArticleController
     }
 
     /**
-     * @Route("/php")
+     * @Route("/article/{slug}")
      */
-    public function php()
+    public function article($slug)
     {
-        return new Response(phpinfo().'php info');
+        $comments = [
+            'I ate a normal rock once. It did NOT taste like bacon.',
+            'Woohoo! I\'m going on an all-asteriod diet!',
+            'I like bacon too! Buy some form my site!'
+        ];
+        return $this->render('article/show.html.twig',[
+            'title'=>ucwords(str_replace('-',' ',$slug)),
+            'comments'=>$comments,
+        ]);
     }
+
+
+
 }
 
